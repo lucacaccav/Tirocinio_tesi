@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Sensori</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Link CSS di Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <!-- Script JavaScript di Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+     <!-- Script JavaScript di socket.io.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Web App for visualizing Sensor Data</h1>
+    <div id="devices-container">
+        <div id="initial-message">No one device available</div>
+        <!-- Modello nascosto del dispositivo, non sarà visibile -->
+        <div class="device template" style="display:none;">
+            <div class="device-name">Device name: <span class="device-name-value">N/A</span></div>
+            <div class="sensor-container">
+                <div class="sensor">
+                    <h2>ACM Sensor</h2>
+                    <p>X: <span class="acm_x">0</span> m/s²</p>
+                    <p>Y: <span class="acm_y">0</span> m/s²</p>
+                    <p>Z: <span class="acm_z">0</span> m/s²</p>
+                    <div class="counter">Updates: <span class="acm_counter">0</span></div>
+                </div>
+
+                <div class="sensor">
+                    <h2>GYR Sensor</h2>
+                    <p>X: <span class="gyr_x">0</span> °/s</p>
+                    <p>Y: <span class="gyr_y">0</span> °/s</p>
+                    <p>Z: <span class="gyr_z">0</span> °/s</p>
+                    <div class="counter">Updates: <span class="gyr_counter">0</span></div>
+                </div>
+
+                <div class="sensor">
+                    <h2>MGT Sensor</h2>
+                    <p>X: <span class="mgt_x">0</span> µT</p>
+                    <p>Y: <span class="mgt_y">0</span> µT</p>
+                    <p>Z: <span class="mgt_z">0</span> µT</p>
+                    <div class="counter">Updates: <span class="mgt_counter">0</span></div>
+                </div>
+
+                <div class="sensor">
+                    <h2>GPS Sensor</h2>
+                    <div class="map-container"></div>
+                    <div class="counter">Updates: <span class="gps_counter">0</span></div>
+                </div>
+
+                <div class="sensor">
+                    <h2>ALS Sensor</h2>
+                    <p>Luminosità: <span class="als_value">0</span> lux</p>
+                    <div class="counter">Updates: <span class="als_counter">0</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="log-messages"></div>
+    <script src="/static/updatePage.js"></script>
+    <script src="/static/main.js"></script>
+</body>
+</html>
